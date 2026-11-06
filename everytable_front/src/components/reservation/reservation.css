@@ -1,0 +1,258 @@
+/* 예약/주문(단체주문 포함) 도메인 공용 스타일 - common.css 올리브그린 토큰 재사용 */
+
+/* 상태 pill: res_status 1=결제전, 2=승인, 3=완료, 4=취소처리중, 5=취소 */
+.res-pill {
+  display: inline-block;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 12px;
+  border: 1px solid transparent;
+}
+.res-pill.s1 { background: #FBF3DE; color: #7A5B10; border-color: #E3CE8E; }
+.res-pill.s2 { background: #E6ECF7; color: #2E4A8A; border-color: #B9C8E8; }
+.res-pill.s3 { background: #EAF3E4; color: var(--olive-900); border-color: var(--olive-300); }
+.res-pill.s4 { background: var(--cream); color: var(--muted); border-color: var(--border); }
+.res-pill.s5 { background: #FBEAEA; color: #A23E3E; border-color: #E3B8B8; }
+
+/* ---------- 상태 필터 탭 ---------- */
+.res-status-tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.res-status-tab {
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 13px;
+  padding: 7px 16px;
+  border-radius: 999px;
+  transition: all 0.15s ease;
+}
+.res-status-tab.active { background: var(--olive-500); border-color: var(--olive-500); color: #F3F1E6; font-weight: 700; }
+.res-status-tab:hover:not(.active) { border-color: var(--olive-500); color: var(--olive-700); }
+
+/* ---------- 예약 내역 목록 테이블 (결제 내역과 통일된 테이블형 레이아웃) ---------- */
+.res-table-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 1px 2px var(--shadow);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.res-table { margin-bottom: 0; }
+.res-table thead th {
+  background: var(--cream);
+  color: var(--olive-700);
+  font-size: 12.5px;
+  font-weight: 700;
+  border-bottom: 1px solid var(--border);
+}
+.res-table tbody td {
+  font-size: 13.5px;
+  color: var(--ink);
+  vertical-align: middle;
+  border-bottom: 1px solid var(--border);
+}
+.res-table tbody tr:last-child td { border-bottom: none; }
+.res-table tbody tr:hover { background: rgba(124, 143, 79, 0.06); cursor: pointer; }
+.res-table .store-name { font-weight: 700; }
+.res-table .no { color: var(--muted); font-size: 12px; margin-left: 6px; font-weight: 500; }
+
+/* ---------- 목록 카드 (내 예약 내역) ---------- */
+.res-list-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  box-shadow: 0 1px 2px var(--shadow);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.res-list-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px var(--shadow); border-color: var(--olive-300); }
+.res-list-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.res-list-store { font-weight: 800; font-size: 15px; color: var(--ink); }
+.res-list-no { font-size: 12px; color: var(--muted); font-weight: 500; margin-left: 6px; }
+.res-list-info { font-size: 13.5px; color: var(--muted); margin-top: 4px; }
+.res-list-actions { display: flex; gap: 6px; margin-top: 10px; justify-content: flex-end; }
+
+/* ---------- 상세 카드 (ReservationView / UpdateForm / AdminView 공용) ---------- */
+.res-detail-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 1px 2px var(--shadow);
+}
+.res-detail-col-title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--olive-500);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.res-row { display: flex; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 13.5px; }
+.res-row:last-child { border-bottom: none; }
+.res-row .res-label { width: 110px; flex-shrink: 0; font-weight: 700; color: var(--olive-700); }
+.res-row .res-value { flex: 1; color: var(--ink); }
+.res-row .res-value.accent { color: var(--olive-700); font-weight: 700; }
+.res-row .res-value.danger { color: #A23E3E; }
+.res-row .res-value.warn { color: #7A5B10; font-weight: 700; }
+
+.res-order-table { width: 100%; font-size: 13.5px; border-collapse: collapse; }
+.res-order-table th { text-align: left; color: var(--muted); font-weight: 700; font-size: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+.res-order-table td { padding: 9px 0; border-bottom: 1px solid var(--border); vertical-align: top; color: var(--ink); }
+.res-order-table tr:last-child td { border-bottom: none; }
+.res-order-total { display: flex; justify-content: space-between; padding-top: 12px; margin-top: 4px; border-top: 1px solid var(--border); font-weight: 800; font-size: 15px; color: var(--olive-700); }
+
+.res-alert { border-radius: 10px; padding: 10px 14px; font-size: 13px; margin-top: 12px; }
+.res-alert.info { background: var(--cream); border: 1px solid var(--border); color: var(--muted); }
+.res-alert.warn { background: #FBF3DE; border: 1px solid #E3CE8E; color: #7A5B10; }
+
+.res-detail-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+/* ---------- 공용 버튼 ---------- */
+.btn-res-primary {
+  background: var(--olive-500); border: 1px solid var(--olive-500); color: #F3F1E6;
+  font-weight: 700; border-radius: 8px; padding: 9px 22px; font-size: 13.5px;
+  text-decoration: none; display: inline-block; cursor: pointer; outline: none; transition: background 0.15s ease;
+}
+.btn-res-primary:hover { background: var(--olive-700); border-color: var(--olive-700); color: #F3F1E6; }
+.btn-res-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.btn-res-outline {
+  background: transparent; border: 1px solid var(--border); color: var(--muted);
+  font-weight: 700; border-radius: 8px; padding: 9px 22px; font-size: 13.5px;
+  text-decoration: none; display: inline-block; cursor: pointer; outline: none; transition: border-color 0.15s ease, color 0.15s ease;
+}
+.btn-res-outline:hover { border-color: var(--olive-500); color: var(--olive-700); }
+
+.btn-res-danger {
+  background: transparent; border: 1px solid #E3B8B8; color: #A23E3E;
+  font-weight: 700; border-radius: 8px; padding: 9px 22px; font-size: 13.5px;
+  cursor: pointer; transition: background 0.15s ease, color 0.15s ease;
+}
+.btn-res-danger:hover { background: #A23E3E; border-color: #A23E3E; color: #fff; }
+
+.btn-res-success {
+  background: var(--olive-700); border: 1px solid var(--olive-700); color: #F3F1E6;
+  font-weight: 700; border-radius: 8px; padding: 9px 22px; font-size: 13.5px;
+  text-decoration: none; display: inline-block; cursor: pointer; outline: none;
+}
+.btn-res-success:hover { background: var(--olive-900); border-color: var(--olive-900); }
+
+/* ---------- 관리(주문 관리) 목록 카드 ---------- */
+.res-admin-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 2px var(--shadow);
+}
+.res-admin-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.res-admin-meta { font-size: 12px; color: var(--muted); }
+.res-admin-name { font-weight: 700; color: var(--ink); font-size: 14.5px; margin-top: 2px; }
+.res-admin-info { font-size: 13px; color: var(--muted); margin: 10px 0; }
+.res-admin-note { font-size: 12.5px; margin-bottom: 8px; }
+.res-admin-note.pending { color: var(--muted); }
+.res-admin-note.rejected { color: #A23E3E; }
+.res-admin-actions { display: flex; gap: 6px; justify-content: flex-end; flex-wrap: wrap; }
+
+.btn-res-sm {
+  border: none; border-radius: 7px; padding: 6px 14px; font-size: 12.5px; font-weight: 700; cursor: pointer;
+  text-decoration: none; display: inline-block;
+}
+.btn-res-sm.approve { background: var(--olive-500); color: #F3F1E6; }
+.btn-res-sm.approve:hover { background: var(--olive-700); }
+.btn-res-sm.reject { background: transparent; border: 1px solid #E3B8B8; color: #A23E3E; }
+.btn-res-sm.reject:hover { background: #A23E3E; color: #fff; }
+.btn-res-sm.outline { background: transparent; border: 1px solid var(--border); color: var(--muted); }
+.btn-res-sm.outline:hover { border-color: var(--olive-500); color: var(--olive-700); }
+
+/* ---------- 그룹 주문 (GroupMenuForm / GroupOrderStatus / GroupOrderComplete / GroupShare) ---------- */
+.group-menu-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.group-menu-card .title { font-weight: 700; color: var(--ink); font-size: 14.5px; }
+.group-menu-card .desc { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.group-menu-card .price { color: var(--olive-700); font-weight: 700; font-size: 13.5px; white-space: nowrap; }
+
+.group-qty-control { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.group-qty-btn {
+  width: 28px; height: 28px; border-radius: 8px; border: 1px solid var(--border);
+  background: var(--card); color: var(--olive-700); font-weight: 800; cursor: pointer; line-height: 1;
+}
+.group-qty-btn:hover { border-color: var(--olive-500); background: rgba(124,143,79,0.08); }
+.group-qty-value { min-width: 20px; text-align: center; font-weight: 700; color: var(--ink); }
+
+.group-total-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin: 16px 0;
+  font-weight: 800;
+  color: var(--olive-700);
+  font-size: 15px;
+}
+
+.group-participant-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+}
+.group-participant-card .name { font-weight: 700; color: var(--ink); font-size: 14px; }
+
+.group-share-card {
+  text-align: center;
+  max-width: 480px;
+  margin: 0 auto;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 36px 32px;
+  box-shadow: 0 1px 2px var(--shadow);
+}
+.group-share-link {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 13px;
+  color: var(--ink);
+  word-break: break-all;
+  margin: 16px 0;
+}
+
+.group-complete-icon { font-size: 44px; margin-bottom: 12px; }
+.group-emoji-head { text-align: center; margin-bottom: 20px; }
+.group-emoji-head .emoji { font-size: 36px; margin-bottom: 8px; }

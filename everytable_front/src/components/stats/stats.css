@@ -1,0 +1,149 @@
+/* 통계 도메인 전용 스타일 - common.css 올리브그린 토큰 재사용 */
+
+.stats-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.stats-summary-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px 22px;
+  box-shadow: 0 1px 2px var(--shadow);
+}
+.stats-summary-card .label { font-size: 12.5px; color: var(--muted); margin-bottom: 6px; }
+.stats-summary-card .value { font-size: 26px; font-weight: 800; color: var(--olive-700); letter-spacing: -0.01em; }
+
+.stats-chart-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 1px 2px var(--shadow);
+}
+.stats-chart-card h5 { font-weight: 800; color: var(--ink); margin-bottom: 16px; font-size: 15.5px; }
+
+.stats-table-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px var(--shadow);
+}
+.stats-table { margin-bottom: 0; }
+.stats-table thead th { background: var(--cream); color: var(--olive-700); font-size: 12.5px; font-weight: 700; border-bottom: 1px solid var(--border); }
+.stats-table tbody td { font-size: 13.5px; color: var(--ink); vertical-align: middle; border-bottom: 1px solid var(--border); }
+.stats-table tbody tr:last-child td { border-bottom: none; }
+.stats-table tbody tr:hover { background: rgba(124, 143, 79, 0.06); }
+
+.stats-search-form { display: flex; gap: 8px; align-items: center; margin-bottom: 16px; flex-wrap: wrap; }
+.stats-search-form .form-control { border: 1px solid var(--border); border-radius: 8px; }
+.stats-search-form .form-control:focus { border-color: var(--olive-500); box-shadow: 0 0 0 3px rgba(124, 143, 79, 0.15); }
+
+.stats-total-banner {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.btn-stats-outline {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 7px 16px;
+  font-size: 13px;
+  text-decoration: none;
+  display: inline-block;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.btn-stats-outline:hover { border-color: var(--olive-500); color: var(--olive-700); }
+
+.btn-stats-primary {
+  background: var(--olive-500);
+  border: 1px solid var(--olive-500);
+  color: #F3F1E6;
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 7px 20px;
+  font-size: 13.5px;
+  transition: background 0.15s ease;
+}
+.btn-stats-primary:hover { background: var(--olive-700); border-color: var(--olive-700); }
+
+.stats-store-switch {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.stats-store-switch label { font-size: 12.5px; font-weight: 700; color: var(--olive-700); }
+.stats-store-switch select {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 13.5px;
+  background: var(--card);
+  min-width: 220px;
+  color: var(--ink);
+}
+.stats-store-switch select:focus {
+  border-color: var(--olive-500);
+  box-shadow: 0 0 0 3px rgba(124, 143, 79, 0.15);
+  outline: none;
+}
+.store-autocomplete {
+  position: relative;
+}
+.store-autocomplete .store-search-input {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 13.5px;
+  background: var(--card);
+  min-width: 220px;
+  color: var(--ink);
+}
+.store-autocomplete .store-search-input:focus {
+  border-color: var(--olive-500);
+  box-shadow: 0 0 0 3px rgba(124, 143, 79, 0.15);
+  outline: none;
+}
+.store-autocomplete-list {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 20;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  max-height: 220px;
+  overflow-y: auto;
+  margin: 0;
+  padding: 4px 0;
+  list-style: none;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+.store-autocomplete-list li {
+  padding: 8px 14px;
+  font-size: 13.5px;
+  color: var(--ink);
+  cursor: pointer;
+}
+.store-autocomplete-list li:hover { background: var(--olive-300); }
+.store-autocomplete-list li.active {
+  background: var(--olive-500);
+  color: #F3F1E6;
+  font-weight: 700;
+}
+.store-autocomplete-list li.empty { color: var(--muted); cursor: default; }
+.store-autocomplete-list li.empty:hover { background: transparent; }
